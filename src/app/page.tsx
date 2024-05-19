@@ -71,7 +71,7 @@ export default function Home() {
         <p>Algo deu errado, tente novamente. Se persistir, tente mais tarde.</p>
       )}
       {loading && (
-        <div role="status">
+        <div role="status" className="mt-4">
           <svg
             aria-hidden="true"
             className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"

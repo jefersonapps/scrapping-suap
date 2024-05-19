@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 
 const ReportTable = ({ tabelaHTML }: { tabelaHTML: string }) => {
   // Removendo as duas últimas colunas da tabela
@@ -25,7 +25,7 @@ const ReportTable = ({ tabelaHTML }: { tabelaHTML: string }) => {
   );
 };
 
-export default function DashBoard() {
+function DashBoardContent() {
   const searchParams = useSearchParams();
   const userData = searchParams.get("data")
     ? JSON.parse(searchParams.get("data") as string)
@@ -114,5 +114,13 @@ export default function DashBoard() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function DashBoard() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DashBoardContent />
+    </Suspense>
   );
 }

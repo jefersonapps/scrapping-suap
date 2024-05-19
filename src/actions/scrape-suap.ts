@@ -30,7 +30,7 @@ export async function scrapeSuap(
   userPassword: string
 ): Promise<UserData | null> {
   try {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle0", timeout: 120000 });
 
